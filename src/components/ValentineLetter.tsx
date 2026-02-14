@@ -3,10 +3,11 @@ import confetti from "canvas-confetti";
 
 interface ValentineLetterProps {
   onAccepted: () => void;
+  onFlipBack: () => void;
   isFlipped: boolean;
 }
 
-const ValentineLetter = ({ onAccepted, isFlipped }: ValentineLetterProps) => {
+const ValentineLetter = ({ onAccepted, onFlipBack, isFlipped }: ValentineLetterProps) => {
   const [noPos, setNoPos] = useState<{ x: number; y: number } | null>(null);
   const [noCount, setNoCount] = useState(0);
 
@@ -129,6 +130,14 @@ const ValentineLetter = ({ onAccepted, isFlipped }: ValentineLetterProps) => {
             <p className="text-valentine-rose font-script text-lg">
               — With all my love ❤️
             </p>
+
+            <button
+              onClick={onFlipBack}
+              className="mt-2 px-6 py-2 bg-secondary text-secondary-foreground rounded-full text-lg font-hand
+                         hover:scale-105 transition-transform duration-200"
+            >
+              ← Flip back
+            </button>
           </div>
         </div>
       </div>
