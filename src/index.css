@@ -123,7 +123,7 @@
 .letter-flipper {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  position: relative;
+  display: grid;
 }
 
 .letter-flipper.flipped {
@@ -133,12 +133,11 @@
 .letter-front, .letter-back {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  grid-area: 1 / 1;
 }
 
 .letter-back {
   transform: rotateY(180deg);
-  position: absolute;
-  inset: 0;
 }
 
 /* Pulse glow on yes button */
