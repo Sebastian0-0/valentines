@@ -28,7 +28,7 @@ const Index = () => {
           <div className="letter-rise">
             <ValentineLetter
               onAccepted={handleAccepted}
-              onFlipBack={() => setStage("letter")}
+              onFlipBack={() => setStage("envelope")}
               isFlipped={stage === "flipped"}
             />
           </div>
