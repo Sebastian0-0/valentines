@@ -84,7 +84,7 @@ const ValentineLetter = ({ onAccepted, onFlipBack, isFlipped }: ValentineLetterP
               I've been wanting to ask you this...
             </p>
 
-            <div className="flex flex-col items-center gap-4 pt-4">
+            <div className="flex flex-col items-center gap-4 pt-8">
               <button
                 onClick={handleYes}
                 className="pulse-glow px-10 py-3 bg-primary text-primary-foreground rounded-full text-xl font-script
