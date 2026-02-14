@@ -4,71 +4,72 @@ interface EnvelopeProps {
 }
 
 const Envelope = ({ onOpen, isOpening }: EnvelopeProps) => {
-  const W = 320; // envelope width
-  const H = 210; // envelope height
-  const half = W / 2;
-
   return (
     <div
       className={`cursor-pointer select-none ${isOpening ? "" : "envelope-idle"}`}
       onClick={!isOpening ? onOpen : undefined}
     >
-      <div className="relative mx-auto" style={{ width: W, height: H, perspective: "800px" }}>
-        {/* Soft shadow */}
+      <div className="relative mx-auto" style={{ width: 300, height: 200 }}>
+        {/* Envelope body */}
         <div
-          className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-[50%] bg-valentine-deep/10 blur-lg"
-          style={{ width: W * 0.8, height: 16 }}
-        />
-
-        {/* Envelope back */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-valentine-rose to-valentine-deep shadow-xl" />
-
-        {/* Inner paper peeking */}
-        <div className="absolute inset-[4px] rounded-lg bg-valentine-cream" />
-
-        {/* Bottom flap overlay */}
-        <svg className="absolute inset-0 z-[2]" viewBox={`0 0 ${W} ${H}`} fill="none">
-          {/* Left bottom flap */}
-          <polygon
-            points={`0,${H} ${half},${H * 0.45} 0,${H * 0.35}`}
-            fill="hsl(346, 72%, 52%)"
+          className="absolute inset-0 rounded-md overflow-hidden"
+          style={{
+            background: "linear-gradient(145deg, #f4c2c2 0%, #e8a0a0 100%)",
+            boxShadow: "0 10px 40px rgba(180, 60, 80, 0.25), 0 2px 8px rgba(0,0,0,0.1)",
+          }}
+        >
+          {/* Paper inside visible behind flap */}
+          <div
+            className="absolute left-3 right-3 top-3 bottom-[40%] rounded-sm"
+            style={{ background: "linear-gradient(to bottom, #fffaf5, #fff5ee)" }}
           />
-          {/* Right bottom flap */}
-          <polygon
-            points={`${W},${H} ${half},${H * 0.45} ${W},${H * 0.35}`}
-            fill="hsl(346, 68%, 48%)"
+
+          {/* Bottom left triangle */}
+          <div
+            className="absolute bottom-0 left-0 w-full h-full"
+            style={{
+              clipPath: "polygon(0 40%, 50% 75%, 0 100%)",
+              background: "linear-gradient(135deg, #d4878f, #c97a82)",
+            }}
           />
-          {/* Center seam line */}
-          <line
-            x1={half} y1={H * 0.45}
-            x2={half} y2={H}
-            stroke="hsl(346, 80%, 40%)"
-            strokeWidth="0.5"
-            opacity="0.3"
+
+          {/* Bottom right triangle */}
+          <div
+            className="absolute bottom-0 left-0 w-full h-full"
+            style={{
+              clipPath: "polygon(100% 40%, 50% 75%, 100% 100%)",
+              background: "linear-gradient(225deg, #d4878f, #c97a82)",
+            }}
           />
-        </svg>
+
+          {/* Bottom center triangle */}
+          <div
+            className="absolute bottom-0 left-0 w-full h-full"
+            style={{
+              clipPath: "polygon(0 100%, 50% 75%, 100% 100%)",
+              background: "linear-gradient(to top, #c2727c, #cb7e87)",
+            }}
+          />
+        </div>
 
         {/* Top flap */}
         <div
-          className={`absolute top-0 left-0 right-0 z-[3] ${isOpening ? "envelope-flap-open" : ""}`}
-          style={{ transformOrigin: "top center" }}
+          className={`absolute top-0 left-0 right-0 z-10 ${isOpening ? "envelope-flap-open" : ""}`}
+          style={{ transformOrigin: "top center", height: "55%" }}
         >
-          <svg viewBox={`0 0 ${W} ${H * 0.55}`} fill="none" style={{ display: "block" }}>
-            <polygon
-              points={`0,0 ${W},0 ${half},${H * 0.55}`}
-              fill="hsl(346, 75%, 42%)"
-            />
-            {/* Flap inner shading */}
-            <polygon
-              points={`4,2 ${W - 4},2 ${half},${H * 0.52}`}
-              fill="hsl(346, 70%, 46%)"
-            />
-          </svg>
+          <div
+            className="w-full h-full"
+            style={{
+              clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+              background: "linear-gradient(180deg, #e0959c 0%, #d68890 50%, #cc7b84 100%)",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            }}
+          />
         </div>
 
-        {/* Heart emoji seal */}
+        {/* Heart seal */}
         {!isOpening && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[5] text-4xl drop-shadow-lg">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-4xl drop-shadow-md">
             💌
           </div>
         )}
