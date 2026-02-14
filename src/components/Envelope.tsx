@@ -83,15 +83,8 @@ const Envelope = ({ onOpen, isOpening }: EnvelopeProps) => {
 
         {/* Heart wax seal */}
         {!isOpening && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <div className="relative">
-              {/* Seal circle */}
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-valentine-deep to-valentine-rose shadow-lg flex items-center justify-center border-2 border-valentine-deep/30">
-                <span className="text-3xl drop-shadow-sm">💕</span>
-              </div>
-              {/* Seal shine */}
-              <div className="absolute top-1 left-2 w-4 h-2 rounded-full bg-white/20 rotate-[-30deg]" />
-            </div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-5xl drop-shadow-lg">
+            💌
           </div>
         )}
 
