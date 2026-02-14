@@ -20,16 +20,15 @@ const Index = () => {
       <FloatingHearts />
 
       <div className="relative z-10 w-full">
-        {/* Envelope stage */}
         {(stage === "envelope" || stage === "opening") && (
           <Envelope onOpen={handleOpenEnvelope} isOpening={stage === "opening"} />
         )}
 
-        {/* Letter stage */}
         {(stage === "letter" || stage === "flipped") && (
           <div className="letter-rise">
             <ValentineLetter
               onAccepted={handleAccepted}
+              onFlipBack={() => setStage("letter")}
               isFlipped={stage === "flipped"}
             />
           </div>
