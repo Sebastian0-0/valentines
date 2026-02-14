@@ -25,8 +25,11 @@ const ValentineLetter = ({ onAccepted, onFlipBack, isFlipped }: ValentineLetterP
   ];
 
   const moveNoButton = useCallback(() => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 50);
+    const padding = 20;
+    const btnW = 140;
+    const btnH = 50;
+    const x = padding + Math.random() * (window.innerWidth - btnW - padding * 2);
+    const y = padding + Math.random() * (window.innerHeight - btnH - padding * 2);
     setNoPos({ x, y });
     setNoCount((c) => c + 1);
   }, []);
