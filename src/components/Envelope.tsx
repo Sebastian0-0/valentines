@@ -18,17 +18,17 @@ const Envelope = ({ onOpen, isOpening }: EnvelopeProps) => {
             boxShadow: "0 10px 40px rgba(180, 60, 80, 0.25), 0 2px 8px rgba(0,0,0,0.1)",
           }}
         >
-          {/* Paper inside visible behind flap */}
+          {/* Paper inside - only a tiny peek at the top */}
           <div
-            className="absolute left-3 right-3 top-3 bottom-[40%] rounded-sm"
-            style={{ background: "linear-gradient(to bottom, #fffaf5, #fff5ee)" }}
+            className="absolute left-4 right-4 top-2 rounded-sm"
+            style={{ height: "35%", background: "linear-gradient(to bottom, #fffaf5, #fff5ee)" }}
           />
 
           {/* Bottom left triangle */}
           <div
             className="absolute bottom-0 left-0 w-full h-full"
             style={{
-              clipPath: "polygon(0 40%, 50% 75%, 0 100%)",
+              clipPath: "polygon(0 35%, 50% 65%, 0 100%)",
               background: "linear-gradient(135deg, #d4878f, #c97a82)",
             }}
           />
@@ -37,7 +37,7 @@ const Envelope = ({ onOpen, isOpening }: EnvelopeProps) => {
           <div
             className="absolute bottom-0 left-0 w-full h-full"
             style={{
-              clipPath: "polygon(100% 40%, 50% 75%, 100% 100%)",
+              clipPath: "polygon(100% 35%, 50% 65%, 100% 100%)",
               background: "linear-gradient(225deg, #d4878f, #c97a82)",
             }}
           />
@@ -46,7 +46,7 @@ const Envelope = ({ onOpen, isOpening }: EnvelopeProps) => {
           <div
             className="absolute bottom-0 left-0 w-full h-full"
             style={{
-              clipPath: "polygon(0 100%, 50% 75%, 100% 100%)",
+              clipPath: "polygon(0 100%, 50% 65%, 100% 100%)",
               background: "linear-gradient(to top, #c2727c, #cb7e87)",
             }}
           />
@@ -55,14 +55,14 @@ const Envelope = ({ onOpen, isOpening }: EnvelopeProps) => {
         {/* Top flap */}
         <div
           className={`absolute top-0 left-0 right-0 z-10 ${isOpening ? "envelope-flap-open" : ""}`}
-          style={{ transformOrigin: "top center", height: "55%" }}
+          style={{ transformOrigin: "top center", height: "50%" }}
         >
           <div
             className="w-full h-full"
             style={{
               clipPath: "polygon(0 0, 100% 0, 50% 100%)",
               background: "linear-gradient(180deg, #e0959c 0%, #d68890 50%, #cc7b84 100%)",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.1))",
             }}
           />
         </div>
